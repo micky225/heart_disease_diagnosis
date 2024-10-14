@@ -1,0 +1,154 @@
+{% extends "block/base-template.html" %}
+{% load static %}
+
+
+{% block content %}
+  <div class="main-content ">
+
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 100px;">
+    </div>
+    <!-- <span class="mask bg-gradient-default opacity-4"></span> -->
+    <!-- Page content -->
+    <div class="container-fluid mt--9 " >
+      <div class="row">
+        <div class="col-xl-12 order-xl-2 mb- mb-xl-0">
+            
+            <div class="card card-profile shadow">
+              <div class="card-body pt-0 pt-md-4">
+                  <div class="row">
+                      <div class="col">
+                          <div class="card-profile-stats d-flex justify-content-center">
+                              <h1 class="mb-4">Prediction Results</h1>
+                          </div>
+                      </div>
+                  </div>
+          
+                  <!-- Create rows and columns to organize the display -->
+                  <div class="container">
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Age:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.age }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Gender:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.get_sex_display }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Chest Pain Type:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.get_chest_pain_type_display }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Resting Blood Pressure:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.resting_blood_pressure }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Serum Cholesterol:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.serum_cholesterol }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Fasting Blood Sugar > 120 mg/dl:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.get_fasting_blood_sugar_level_display }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Resting Electrocardiographic Results:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.get_resting_electrocardiographoc_results_display }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Maximum Heart Rate Achieved:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.maximum_heart_rate }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Exercise Induced Angina:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.get_exercise_induced_agina_display }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">ST Depression:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.st_depression }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Slope of the Peak Exercise ST Segment:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.get_slope_display }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Number of Major Vessels (0-4):</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.number_of_major_vessels }}</p>
+                          </div>
+                      </div>
+          
+                      <div class="row mb-3">
+                          <div class="col-6">
+                              <p class="font-weight-bold">Thallium Stress Test Result:</p>
+                          </div>
+                          <div class="col-6 text-right">
+                              <p>{{ results.get_thallium_stress_test_results_display }}</p>
+                          </div>
+                      </div>
+                  </div>
+          
+                  <hr class="my-4" />
+          
+                  <p class="text-center font-weight-bold">Prediction Result: {{ results.prediction_result }}</p>
+              </div>
+          </div>
+          
+
+      {% endblock content %}   

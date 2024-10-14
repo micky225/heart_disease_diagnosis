@@ -1,0 +1,205 @@
+{% extends "block/base-template.html" %}
+{% load static %}
+
+
+{% block content %}
+  <div class="main-content">
+    <!-- Navbar -->
+    
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 500px; background-image: url({% static "/assets/img/theme/_w850.jpg" %}); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-4"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white">Monitor your Heart</h1>
+            <p class="text-white mt-0 mb-5"> Early detection of heart disease can significantly improve patient outcomes by enabling timely interventions and treatments. 
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-12 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  {% comment %} <h3 class="mb-0">Upload CSV </h3> {% endcomment %}
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form id="heartForm" action="" method="POST">
+                {% csrf_token %}
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-username">Age</label>
+                        {{form.age}}
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Gender</label>
+                        <select class="form-control form-control-alternative" required name="{{ form.sex.name }}" name="" id="">
+                          {% for code, name in form.sex.field.choices %}
+                          <option value="{{ code }}" {% if code == sex.value %}selected{% endif %}>{{ name }}</option>
+                          {% endfor %} 
+                        </select>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Chest Pain Type</label>
+                        <select class="form-control form-control-alternative" required name="{{ form.chest_pain_type.name }}" name="" id="">
+                          {% for code, name in form.chest_pain_type.field.choices %}
+                          <option value="{{ code }}" {% if code == chest_pain_type.value %}selected{% endif %}>{{ name }}</option>
+                          {% endfor %} 
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Resting Blood Pressure (mmHg)</label>
+                        {{form.resting_blood_pressure}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Serum Cholesrol (mg/dl)</label>
+                        {{form.serum_cholesterol}}
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Fasting Blood Sugar > 120 mg/dl</label>
+                        <select class="form-control form-control-alternative" required name="{{ form.fasting_blood_sugar_level.name }}" name="" id="">
+                          {% for code, name in form.fasting_blood_sugar_level.field.choices %}
+                          <option value="{{ code }}" {% if code == fasting_blood_sugar_level.value %}selected{% endif %}>{{ name }}</option>
+                          {% endfor %} 
+                        </select>
+                      </div>
+                    </div>
+                  </div> <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Resting Electrocordiagraphic Results</label>
+                        <select class="form-control form-control-alternative" required name="{{ form.resting_electrocardiographoc_results.name }}" name="" id="">
+                          {% for code, name in form.resting_electrocardiographoc_results.field.choices %}
+                          <option value="{{ code }}" {% if code == resting_electrocardiographoc_results.value %}selected{% endif %}>{{ name }}</option>
+                          {% endfor %} 
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Maximum Heart Rate Achieved</label>
+                        {{form.maximum_heart_rate}}
+                      </div>
+                    </div>
+                  </div> <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Exercise Include Angina</label>
+                        <select class="form-control form-control-alternative" required name="{{ form.exercise_induced_agina.name }}" name="" id="">
+                          {% for code, name in form.exercise_induced_agina.field.choices %}
+                          <option value="{{ code }}" {% if code == exercise_induced_agina.value %}selected{% endif %}>{{ name }}</option>
+                          {% endfor %} 
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">ST Depression</label>
+                        {{form.st_depression}}
+                      </div>
+                    </div>
+                  </div> <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Slope of the Peak Exercise ST Segment</label>
+                        <select class="form-control form-control-alternative" required name="{{ form.slope.name }}" name="" id="">
+                          {% for code, name in form.slope.field.choices %}
+                          <option value="{{ code }}" {% if code == slope.value %}selected{% endif %}>{{ name }}</option>
+                          {% endfor %} 
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name"> Number of Major Vessels (0-4)</label>
+                        {{form.number_of_major_vessels}}
+                      </div>
+                    </div>
+                  </div> <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Thallium Stress Test Result</label>
+                        <select class="form-control form-control-alternative" required name="{{ form.thallium_stress_test_results.name }}" name="" id="">
+                          {% for code, name in form.thallium_stress_test_results.field.choices %}
+                          <option value="{{ code }}" {% if code == thallium_stress_test_results.value %}selected{% endif %}>{{ name }}</option>
+                          {% endfor %} 
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="submit" class="btn btn-info">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        document.getElementById('heartForm').addEventListener('submit', async function(event) {
+          event.preventDefault();
+      
+          const form = new FormData(this); 
+      
+         
+          const formData = {};
+          form.forEach((value, key) => {
+            formData[key] = value;
+          });
+      
+          try {
+            
+            const response = await fetch('http://127.0.0.1:8000/api/heart-api/', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+              },
+              body: JSON.stringify(formData)
+            });
+      
+            const result = await response.json();
+      
+            if (response.ok) {
+             
+              window.location.href = `/prediction-results/${result.id}/`;
+          } else {
+             
+              console.error(result);
+          }
+      
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        });
+      </script>
+      
+ {% endblock content %}   

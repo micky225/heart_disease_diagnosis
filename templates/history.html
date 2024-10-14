@@ -1,0 +1,64 @@
+{% extends "block/base-template.html" %}
+{% load static %}
+
+
+{% block content %}
+  <div class="main-content">
+    <div class="header  pb-8 pt-5 pt-md-8" style="min-height: 200px; background-image: url({% static "/assets/img/theme/heart-disease-image_tcm7-170500.jpg" %}); background-size: cover; background-position: center top;">
+      <div class="container-fluid">
+        <div class="header-body">
+          <h1 class="display-2 text-white"></h1>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mt--7">
+
+      <!-- Dark table -->
+      <div class="row mt-5">
+        <div class="col">
+          <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="text-white mb-0">History</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-dark table-flush">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Prediction Result</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for history in historys %}
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">{{history.prediction_result}}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td>
+                      {{history.created_at}}
+                    </td>
+                    <td class="text-right">
+                      <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                          <a class="dropdown-item" href="{% url 'website:results' history.pk %}">View</a>
+                          <a class="dropdown-item" href="{% url 'website:delete-result' history.id %}">Delete</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endblock content %}   
